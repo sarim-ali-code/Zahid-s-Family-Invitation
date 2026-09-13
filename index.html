@@ -254,7 +254,7 @@ button{ font-family:inherit; cursor:pointer; }
 .cal-month-sub{ font-size:10px; letter-spacing:.3em; color:var(--cream-faint); text-transform:uppercase; margin-bottom:16px; }
 .cal-grid{ display:grid; grid-template-columns:repeat(7,1fr); gap:4px; }
 .cal-wd{ font-size:10px; color:var(--gold-deep); font-weight:600; padding-bottom:6px; }
-.cal-day{ position:relative; font-size:12.5px; color:var(--cream-dim); padding:8px 0; border-radius:50%; display:flex; align-items:center; justify-content:center; aspect-ratio:1/1; }
+.cal-day{ position:relative; font-size:12.5px; color:var(--cream-dim); padding:0; border-radius:50%; display:flex; align-items:center; justify-content:center; aspect-ratio:1/1; }
 .cal-day.empty{ visibility:hidden; }
 .cal-day.highlight{ background: radial-gradient(circle at 35% 30%, var(--gold-light), var(--barat) 75%); color:var(--night); font-weight:700; box-shadow:0 0 0 3px var(--gold-champagne), 0 4px 12px rgba(0,0,0,.5); animation: haloGlow 2.8s ease-in-out infinite; }
 @keyframes haloGlow{ 0%,100%{ box-shadow:0 0 0 3px var(--gold-champagne), 0 4px 10px rgba(0,0,0,.4);} 50%{ box-shadow:0 0 0 3px var(--gold-champagne), 0 4px 22px rgba(201,162,75,.7);} }
