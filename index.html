@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Valima &amp; Baraat — The Family of Zahid Ali</title>
+<meta name="description" content="You are cordially invited — Sheheryar's Valima &amp; Areeba's Baraat — 21 December 2026, Tabish Banquet, Karachi">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Amiri:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+
+<style>
+/* ============================================================
+   0. TOKENS
+   ============================================================ */
+:root{
+  --night:#270e0e;
+  --night-2:#3b161fc9;
+  --night-3:#241811;
+
+  --gold-deep:#8A6423;
+  --gold:#C9A24B;
+  --gold-champagne:#E7C878;
+  --gold-light:#F4E2A8;
+
+  --cream:#FFEBB8;
+  --cream-dim:rgba(255,235,184,.78);
+  --cream-faint:rgba(255,235,184,.52);
+
+  --barat:#8B1E2D;
+  --barat-deep:#4E1019;
+  --barat-glow:#B3364A;
+
+  --valima:#1D4533;
+  --valima-deep:#0F281D;
+  --valima-glow:#2E6E4F;
+
+  --font-display:'Playfair Display', serif;
+  --font-script:'Cormorant Garamond', serif;
+  --font-arabic:'Amiri', serif;
+  --font-body:'Poppins', sans-serif;
+
+  --ease-cinematic: cubic-bezier(.83,0,.17,1);
+  --ease-soft: cubic-bezier(.22,1,.36,1);
+}
+
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; overflow-x:hidden; background:var(--night); scroll-behavior:smooth; }
+body{ font-family:var(--font-body); color:var(--cream); min-height:100dvh; }
+body.locked{ overflow:hidden; height:100dvh; }
+img,svg{ display:block; max-width:100%; }
+button{ font-family:inherit; cursor:pointer; }
+::selection{ background:var(--gold-light); color:var(--barat-deep); }
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
+}
+
+/* ============================================================
+   1. CURTAIN INTRO
+   ============================================================ */
+.curtain-stage{ position:fixed; inset:0; height:100dvh; width:100vw; z-index:9999; display:flex; }
+.curtain{
+  position:relative; width:50%; height:100%;
+  background: var(--barat-deep);
+  box-shadow: inset 0 0 130px rgba(0,0,0,.65);
+  transition: transform 1.9s var(--ease-cinematic);
+  overflow:hidden;
+}
+.curtain::before{
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,.08) 0px, transparent 14px, rgba(0,0,0,.28) 22px, transparent 34px);
+  mix-blend-mode: overlay;
+}
+.curtain::after{
+  content:''; position:absolute; top:0; bottom:0; width:10px;
+  background: linear-gradient(180deg, var(--gold-light), var(--gold), var(--gold-deep));
+  box-shadow: 0 0 20px rgba(201,162,75,.75);
+}
+.curtain-left{ left:0; transform-origin:left; } .curtain-left::after{ right:0; }
+.curtain-right{ right:0; transform-origin:right; } .curtain-right::after{ left:0; }
+.curtain-tassel-row{ position:absolute; bottom:0; left:0; right:0; height:34px; background: repeating-linear-gradient(90deg, var(--gold) 0 6px, var(--gold-deep) 6px 12px); box-shadow: 0 -2px 10px rgba(0,0,0,.45); }
+
+.stage-glow{ position:absolute; inset:0; margin:auto; width:60vmax; height:60vmax; border-radius:50%; background: radial-gradient(circle, rgba(255,222,150,.45), transparent 65%); opacity:0; pointer-events:none; transition: opacity 1.6s ease .3s; z-index:9998; }
+
+.curtain-center{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; z-index:2; pointer-events:none; }
+.curtain-invite{ pointer-events:auto; text-align:center; color:var(--gold-light); transition: opacity .8s ease, transform .8s ease; padding:0 24px; }
+.curtain-invite .eyebrow{ font-family:var(--font-body); letter-spacing:.35em; font-size:11px; text-transform:uppercase; opacity:.85; margin-bottom:16px; }
+.dual-seal{ display:flex; align-items:center; justify-content:center; gap:14px; margin-bottom:18px; }
+.dual-seal .init{ font-family:var(--font-display); font-weight:700; font-size:clamp(30px,8vw,40px); color:var(--gold-light); }
+.dual-seal .amp{ font-family:var(--font-script); font-style:italic; font-size:22px; color:var(--gold-champagne); opacity:.8; }
+.curtain-invite h1{ font-family:var(--font-script); font-style:italic; font-weight:600; font-size:clamp(22px,5.6vw,32px); margin:0 0 6px; color:var(--gold-light); text-shadow:0 2px 18px rgba(0,0,0,.55); }
+.curtain-invite .sub{ font-family:var(--font-display); font-size:clamp(13px,3.2vw,16px); letter-spacing:.08em; margin-bottom:34px; opacity:.9; }
+.open-btn{ position:relative; background:transparent; border:1px solid var(--gold); color:var(--gold-light); padding:16px 40px; font-size:13px; letter-spacing:.28em; text-transform:uppercase; border-radius:2px; animation:pulseGlow 2.6s ease-in-out infinite; }
+.open-btn::before,.open-btn::after{ content:''; position:absolute; top:-6px; bottom:-6px; left:-6px; right:-6px; border:1px solid rgba(201,162,75,.4); pointer-events:none; }
+@keyframes pulseGlow{ 0%,100%{ box-shadow:0 0 0 0 rgba(201,162,75,.35);} 50%{ box-shadow:0 0 24px 4px rgba(201,162,75,.35);} }
+.open-btn:hover{ background: rgba(201,162,75,.14); }
+
+.curtain-stage.opening .curtain-left{ transform: translateX(-105%); }
+.curtain-stage.opening .curtain-right{ transform: translateX(105%); }
+.curtain-stage.opening .stage-glow{ opacity:1; }
+.curtain-stage.opening .curtain-invite{ opacity:0; transform:scale(.92); }
+.curtain-stage.hidden{ visibility:hidden; }
+
+/* ============================================================
+   2. LAYOUT SHELL / CARD
+   ============================================================ */
+.page-backdrop{
+  position:relative; min-height:100dvh;
+  background:
+    radial-gradient(ellipse at 15% 0%, rgba(139,30,45,.28), transparent 55%),
+    radial-gradient(ellipse at 85% 15%, rgba(29,69,51,.30), transparent 55%),
+    linear-gradient(180deg, var(--night), var(--night-2) 45%, var(--night-3) 100%);
+  padding: 28px 12px 60px; display:flex; justify-content:center;
+}
+.page-backdrop::before{
+  content:''; position:absolute; inset:0; opacity:.06;
+  background-image: repeating-linear-gradient(45deg, var(--gold) 0 1px, transparent 1px 22px), repeating-linear-gradient(-45deg, var(--gold) 0 1px, transparent 1px 22px);
+  pointer-events:none;
+}
+.invitation-card{
+  position:relative; width:100%; max-width:580px;
+  background: linear-gradient(160deg, var(--night-2), var(--night-3) 60%, var(--night) 100%);
+  border-radius:6px; box-shadow: 0 30px 90px rgba(0,0,0,.55), 0 4px 20px rgba(0,0,0,.4), inset 0 0 80px rgba(0,0,0,.4);
+  overflow:hidden;
+}
+.card-frame{ position:relative; margin:10px; border:1.5px solid var(--gold); outline:1px solid rgba(201,162,75,.4); outline-offset:5px; padding:6px; }
+.corner-ornament{ position:absolute; width:52px; height:52px; z-index:3; opacity:.9; }
+.corner-tl{ top:-2px; left:-2px; } .corner-tr{ top:-2px; right:-2px; transform:scaleX(-1); }
+.corner-bl{ bottom:-2px; left:-2px; transform:scaleY(-1); } .corner-br{ bottom:-2px; right:-2px; transform:scale(-1,-1); }
+
+.section{ position:relative; padding:52px 26px; text-align:center; opacity:0; transform:translateY(28px); transition: opacity .9s var(--ease-soft), transform .9s var(--ease-soft); }
+.section.revealed{ opacity:1; transform:none; }
+.section.tone-neutral{ background: radial-gradient(ellipse at 50% 0%, rgba(201,162,75,.10), transparent 65%), var(--night-2); }
+.section.tone-black{ background: radial-gradient(ellipse at 50% 40%, rgba(201,162,75,.14), transparent 60%), var(--night); }
+
+.divider{ display:flex; align-items:center; justify-content:center; gap:12px; padding:0 30px; background:var(--night-2); }
+.divider .line{ height:1px; flex:1; background: linear-gradient(90deg, transparent, var(--gold-champagne), transparent); }
+.divider .mark{ color:var(--gold-champagne); font-size:14px; }
+
+.petal-layer,.particle-layer{ position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:1; }
+.gold-dot{ position:absolute; width:3px; height:3px; border-radius:50%; background:var(--gold-light); opacity:0; animation: twinkle 3.4s ease-in-out infinite; box-shadow:0 0 7px var(--gold-light); }
+@keyframes twinkle{ 0%,100%{opacity:0;} 50%{opacity:1;} }
+.gold-dust{ position:absolute; width:2px; height:2px; border-radius:50%; background:var(--gold-champagne); opacity:.55; animation: drift linear infinite; }
+@keyframes drift{ 0%{ transform:translateY(10vh) translateX(0); opacity:0;} 10%{opacity:.6;} 90%{opacity:.6;} 100%{ transform:translateY(-110vh) translateX(20px); opacity:0;} }
+
+.petal{ position:absolute; top:-30px; width:12px; height:12px; border-radius:0 60% 0 60%; background:var(--petal-color, var(--gold)); opacity:.8; animation: fallSway linear infinite; }
+@keyframes fallSway{ 0%{ transform:translate(0,-6%) rotate(0deg);} 50%{ transform:translate(24px,120%) rotate(180deg);} 100%{ transform:translate(-10px,260%) rotate(360deg);} }
+
+/* ============================================================
+   3. HERO
+   ============================================================ */
+.hero-section{ padding-top:44px; }
+.bismillah{ font-family:var(--font-arabic); font-size:clamp(22px,6.4vw,30px); line-height:1.9; margin:4px 0 18px; direction:rtl;
+  background: linear-gradient(100deg, var(--gold-deep), var(--gold-light) 30%, var(--gold-champagne) 50%, var(--gold-light) 70%, var(--gold-deep) 95%);
+  -webkit-background-clip:text; background-clip:text; color:transparent; background-size:220% auto; animation: shimmerText 8s ease-in-out infinite; }
+@keyframes shimmerText{ 0%,100%{ background-position:0% center;} 50%{ background-position:100% center;} }
+
+.verse-block{ margin:0 auto 30px; max-width:340px; padding:18px 14px; border-top:1px solid rgba(201,162,75,.4); border-bottom:1px solid rgba(201,162,75,.4); }
+.verse-arabic{ font-family:var(--font-arabic); font-size:clamp(19px,5.4vw,24px); direction:rtl; color:var(--gold-champagne); margin:0 0 10px; line-height:1.7; }
+.verse-translation{ font-family:var(--font-script); font-style:italic; font-size:16px; color:var(--cream); margin:0 0 8px; }
+.verse-citation{ font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--cream-faint); }
+
+.seal-wrap{ display:flex; align-items:center; justify-content:center; gap:0; margin:0 0 22px; }
+.seal-ring{ position:relative; width:96px; height:96px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  border:1.5px solid var(--gold); box-shadow:0 0 0 4px var(--night), 0 0 0 5px rgba(201,162,75,.5), 0 0 26px rgba(201,162,75,.3); }
+.seal-ring .letters{ font-family:var(--font-display); font-weight:700; font-size:26px;
+  background: linear-gradient(120deg, var(--gold-deep), var(--gold-light) 45%, var(--gold-champagne) 80%);
+  -webkit-background-clip:text; background-clip:text; color:transparent; }
+.seal-amp{ font-family:var(--font-script); font-style:italic; font-size:20px; color:var(--gold-champagne); margin:0 14px; }
+
+.host-line{ font-family:var(--font-display); font-weight:600; font-size:clamp(17px,4.4vw,20px); letter-spacing:.02em; color:var(--cream); margin:0 0 10px; }
+.host-sub{ font-family:var(--font-script); font-style:italic; font-size:14px; color:var(--cream-dim); margin:0 0 26px; }
+.invite-line{ font-family:var(--font-body); font-weight:300; font-size:13.5px; letter-spacing:.03em; color:var(--cream-dim); max-width:340px; margin:0 auto 8px; line-height:1.8; }
+
+.pair-preview{ display:flex; flex-direction:column; gap:10px; max-width:320px; margin:22px auto 0; }
+.pair-row{ display:flex; align-items:center; justify-content:center; gap:8px; font-family:var(--font-script); font-style:italic; font-size:16px; color:var(--cream-dim); }
+.pair-row .tag{ font-family:var(--font-body); font-style:normal; font-size:9.5px; letter-spacing:.2em; text-transform:uppercase; padding:3px 9px; border-radius:20px; border:1px solid; }
+.pair-row.barat .tag{ color:var(--barat-glow); border-color:var(--barat-glow); }
+.pair-row.valima .tag{ color:var(--valima-glow); border-color:var(--valima-glow); }
+
+/* ============================================================
+   4. EVENT CARDS (Valima / Barat)
+   ============================================================ */
+.event-section.theme-valima{ background: var(--valima-deep); --petal-color: var(--valima-glow); }
+.event-section.theme-barat{ background: var(--barat-deep); --petal-color: var(--barat-glow); }
+
+.event-eyebrow{ font-size:11px; letter-spacing:.4em; text-transform:uppercase; color:var(--cream-faint); margin-bottom:10px; }
+.event-title{ font-family:var(--font-display); font-weight:700; font-size:clamp(22px,6vw,28px); margin:0 0 6px; }
+.theme-valima .event-title{ color:var(--valima-glow); text-shadow:0 0 20px rgba(46,110,79,.35); }
+.theme-barat .event-title{ color:var(--barat-glow); text-shadow:0 0 20px rgba(179,54,74,.35); }
+
+.motif-arch{ margin:6px auto 20px; opacity:.9; }
+
+.event-names{ margin:14px 0 18px; }
+.event-names .nm{ font-family:var(--font-display); font-weight:700; font-size:clamp(24px,7vw,32px); line-height:1.2; color:var(--cream); }
+.event-names .rel{ font-family:var(--font-script); font-style:italic; font-size:13px; color:var(--cream-faint); margin-top:2px; }
+.event-with{ font-family:var(--font-script); font-style:italic; font-weight:500; font-size:clamp(15px,4vw,18px); margin:10px 0; display:flex; align-items:center; justify-content:center; gap:10px; }
+.theme-valima .event-with{ color:var(--valima-glow); }
+.theme-barat .event-with{ color:var(--barat-glow); }
+.event-with .fl{ width:30px; height:1px; background:linear-gradient(90deg, transparent, var(--gold)); }
+.event-with .fl.r{ background:linear-gradient(90deg, var(--gold), transparent); }
+
+.names-block{ margin:8px 0 6px; }
+.bride-name,.groom-name{ font-family:var(--font-display); font-weight:700; font-size:clamp(27px,7.6vw,36px); line-height:1.18;
+  background: linear-gradient(100deg, var(--gold-deep), var(--gold-light) 30%, var(--gold-champagne) 50%, var(--gold-light) 70%, var(--gold-deep) 95%);
+  -webkit-background-clip:text; background-clip:text; color:transparent; background-size:220% auto; animation: shimmerText 7s ease-in-out infinite; letter-spacing:.01em; }
+.with-mark{ font-family:var(--font-script); font-style:italic; font-weight:500; font-size:clamp(15px,4.2vw,18px); color:var(--gold-champagne); margin:8px 0; display:flex; align-items:center; justify-content:center; gap:10px; }
+.with-mark .fl{ width:32px; height:1px; background:linear-gradient(90deg, transparent, var(--gold)); }
+.with-mark .fl.r{ background:linear-gradient(90deg, var(--gold), transparent); }
+.groom-of{ font-family:var(--font-script); font-style:italic; font-size:14px; color:var(--cream-dim); margin:6px 0 20px; }
+.blessing-line{ font-family:var(--font-script); font-size:15px; color:var(--gold-champagne); max-width:320px; margin:18px auto 0; line-height:1.7; }
+
+/* archway reveal panel */
+.archway{ position:relative; max-width:280px; margin:20px auto 0; height:180px; border-radius:140px 140px 6px 6px; overflow:hidden;
+  border:1.5px solid var(--gold); box-shadow: inset 0 0 30px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35); }
+.archway .door{ position:absolute; top:0; bottom:0; width:50%; background: linear-gradient(180deg, var(--gold-deep), var(--gold) 40%, var(--gold-champagne)); transition: transform 1.1s var(--ease-soft); }
+.archway .door.l{ left:0; transform-origin:left; border-radius:140px 0 0 0; }
+.archway .door.r{ right:0; transform-origin:right; border-radius:0 140px 0 0; }
+.archway .doortext{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; opacity:0; transition: opacity .8s ease .5s; padding:14px; text-align:center; }
+.archway.revealed .door.l{ transform: rotateY(78deg); }
+.archway.revealed .door.r{ transform: rotateY(-78deg); }
+.archway.revealed .doortext{ opacity:1; }
+.doortext .blessing{ font-family:var(--font-script); font-style:italic; font-size:14px; color:var(--cream-dim); text-align: center; margin: -10px 18px 0;}
+
+/* countdown */
+.countdown-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:9px; max-width:400px; margin:26px auto 0; }
+.cd-box{ background: linear-gradient(160deg, rgba(201,162,75,.10), rgba(0,0,0,.2)); border:1px solid var(--gold-deep); border-radius:8px; padding:12px 4px 10px; }
+.cd-num{ font-family:var(--font-display); font-weight:700; font-size:clamp(21px,5.4vw,28px);
+  background: linear-gradient(120deg, var(--gold-deep), var(--gold-light) 40%, var(--gold-champagne) 70%);
+  -webkit-background-clip:text; background-clip:text; color:transparent; transition: transform .35s var(--ease-soft), opacity .35s; }
+.cd-num.tick{ transform: translateY(-6px) scale(1.05); opacity:.4; }
+.cd-label{ font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--cream-faint); margin-top:5px; }
+.arrived-msg{ font-family:var(--font-script); font-style:italic; font-size:20px; color:var(--gold-champagne); padding:8px 0; }
+
+/* ============================================================
+   5. SCRATCH CARD
+   ============================================================ */
+.scratch-wrap{ position:relative; max-width:400px; height:220px; margin:0 auto; border-radius:14px; overflow:hidden; box-shadow:0 14px 34px rgba(0,0,0,.5); border:1.5px solid var(--gold); }
+.scratch-reveal{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background: radial-gradient(ellipse at 50% 30%, rgba(201,162,75,.16), transparent 60%), var(--night); padding:20px; }
+.scratch-reveal .rdate{ font-family:var(--font-display); font-weight:700; font-size:clamp(24px,6.4vw,30px); letter-spacing:.04em;
+  background: linear-gradient(120deg, var(--gold-deep), var(--gold-light) 40%, var(--gold-champagne) 70%); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.scratch-reveal .rmsg{ font-family:var(--font-script); font-style:italic; font-size:16px; color:var(--cream); margin-top:10px; max-width:290px; }
+#scratchCanvas{ position:absolute; inset:0; width:100%; height:100%; touch-action:none; cursor:pointer; }
+.scratch-caption{ margin-top:16px; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--cream-faint); }
+
+/* ============================================================
+   6. CALENDAR
+   ============================================================ */
+.cal-card{ max-width:360px; margin:0 auto; background: linear-gradient(160deg, rgba(201,162,75,.08), rgba(0,0,0,.2)); border:1.5px solid var(--gold); outline:1px solid rgba(201,162,75,.35); outline-offset:4px; border-radius:6px; padding:22px 14px 18px; }
+.cal-month{ font-family:var(--font-display); font-weight:700; font-size:18px; color:var(--gold-champagne); margin-bottom:2px; }
+.cal-month-sub{ font-size:10px; letter-spacing:.3em; color:var(--cream-faint); text-transform:uppercase; margin-bottom:16px; }
+.cal-grid{ display:grid; grid-template-columns:repeat(7,1fr); gap:4px; }
+.cal-wd{ font-size:10px; color:var(--gold-deep); font-weight:600; padding-bottom:6px; }
+.cal-day{ position:relative; font-size:12.5px; color:var(--cream-dim); padding:8px 0; border-radius:50%; display:flex; align-items:center; justify-content:center; aspect-ratio:1/1; }
+.cal-day.empty{ visibility:hidden; }
+.cal-day.highlight{ background: radial-gradient(circle at 35% 30%, var(--gold-light), var(--barat) 75%); color:var(--night); font-weight:700; box-shadow:0 0 0 3px var(--gold-champagne), 0 4px 12px rgba(0,0,0,.5); animation: haloGlow 2.8s ease-in-out infinite; }
+@keyframes haloGlow{ 0%,100%{ box-shadow:0 0 0 3px var(--gold-champagne), 0 4px 10px rgba(0,0,0,.4);} 50%{ box-shadow:0 0 0 3px var(--gold-champagne), 0 4px 22px rgba(201,162,75,.7);} }
+.cal-day.highlight .ring-badge{ position:absolute; top:-9px; right:-6px; font-size:11px; }
+
+/* ============================================================
+   7. VENUE
+   ============================================================ */
+.venue-eyebrow{ font-family:var(--font-script); font-style:italic; font-size:18px; color:var(--gold-champagne); margin-bottom:6px; }
+.venue-host{ font-family:var(--font-display); font-weight:700; font-size:22px; color:var(--cream); margin-bottom:14px; }
+.venue-name-label{ font-size:11px; letter-spacing:.25em; text-transform:uppercase; color:var(--cream-faint); margin-bottom:4px; }
+.venue-name{ font-family:var(--font-display); font-weight:700; font-size:23px; color:var(--gold-champagne); margin-bottom:2px; }
+.venue-address{ font-size:13px; color:var(--cream-dim); margin-bottom:26px; }
+.directions-btn{ position:relative; display:inline-flex; align-items:center; gap:10px; overflow:hidden;
+  background: linear-gradient(120deg, var(--gold-deep), var(--gold), var(--gold-light)); color:var(--night); border:none; padding:15px 34px; border-radius:30px;
+  font-weight:600; font-size:13px; letter-spacing:.14em; text-transform:uppercase; box-shadow:0 10px 26px rgba(0,0,0,.4); transition: transform .25s var(--ease-soft), box-shadow .25s; }
+.directions-btn::after{ content:''; position:absolute; top:0; left:-60%; width:40%; height:100%; background: linear-gradient(120deg, transparent, rgba(255,255,255,.55), transparent); transform:skewX(-20deg); transition: left .6s ease; }
+.directions-btn:hover::after{ left:130%; }
+.directions-btn:hover{ transform: translateY(-2px); box-shadow:0 14px 32px rgba(0,0,0,.5); }
+.directions-btn:active{ transform: translateY(0); }
+
+/* footer */
+.footer{ padding:34px 20px 46px; text-align:center; background:var(--night); }
+.footer .fnames{ font-family:var(--font-script); font-style:italic; font-size:15px; color:var(--gold-champagne); }
+.footer .fdate{ font-size:11px; letter-spacing:.2em; color:var(--cream-faint); margin-top:6px; text-transform:uppercase; }
+
+/* ============================================================
+   8. RESPONSIVE
+   ============================================================ */
+@media (min-width:640px){
+  .page-backdrop{ padding:56px 24px 90px; }
+  .invitation-card{ max-width:620px; border-radius:10px; }
+  .section{ padding:68px 46px; }
+  .countdown-grid{ max-width:460px; gap:14px; }
+}
+@media (min-width:1024px){
+  .invitation-card{ max-width:660px; }
+  .curtain-invite h1{ font-size:40px; }
+}
+</style>
+</head>
+<body class="locked">
+
+<!-- ============================================================
+     CurtainIntro
+     ============================================================ -->
+<div class="curtain-stage" id="curtainStage">
+  <div class="curtain curtain-left"><div class="curtain-tassel-row"></div></div>
+  <div class="curtain curtain-right"><div class="curtain-tassel-row"></div></div>
+  <div class="stage-glow"></div>
+  <div class="curtain-center">
+    <div class="curtain-invite" id="curtainInvite">
+      <div class="eyebrow">You are cordially invited</div>
+      <h1>The Wedding Celebrations</h1>
+      <p class="sub">of the Family of Zahid Ali</p>
+      <button class="open-btn" id="openBtn" aria-label="Open the wedding invitation">Open Invitation</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     Main Invitation
+     ============================================================ -->
+<div class="page-backdrop">
+  <div class="invitation-card" id="mainContent">
+    <div class="card-frame">
+
+      <svg class="corner-ornament corner-tl" viewBox="0 0 60 60" fill="none"><path d="M2,58 C2,30 10,10 40,4 M2,50 C2,34 12,18 34,10" stroke="#C9A24B" stroke-width="1.3"/><circle cx="40" cy="4" r="2.4" fill="#C9A24B"/><path d="M2,58 C16,58 22,50 24,40" stroke="#8A6423" stroke-width="1"/></svg>
+      <svg class="corner-ornament corner-tr" viewBox="0 0 60 60" fill="none"><path d="M2,58 C2,30 10,10 40,4 M2,50 C2,34 12,18 34,10" stroke="#C9A24B" stroke-width="1.3"/><circle cx="40" cy="4" r="2.4" fill="#C9A24B"/><path d="M2,58 C16,58 22,50 24,40" stroke="#8A6423" stroke-width="1"/></svg>
+      <svg class="corner-ornament corner-bl" viewBox="0 0 60 60" fill="none"><path d="M2,58 C2,30 10,10 40,4 M2,50 C2,34 12,18 34,10" stroke="#C9A24B" stroke-width="1.3"/><circle cx="40" cy="4" r="2.4" fill="#C9A24B"/><path d="M2,58 C16,58 22,50 24,40" stroke="#8A6423" stroke-width="1"/></svg>
+      <svg class="corner-ornament corner-br" viewBox="0 0 60 60" fill="none"><path d="M2,58 C2,30 10,10 40,4 M2,50 C2,34 12,18 34,10" stroke="#C9A24B" stroke-width="1.3"/><circle cx="40" cy="4" r="2.4" fill="#C9A24B"/><path d="M2,58 C16,58 22,50 24,40" stroke="#8A6423" stroke-width="1"/></svg>
+
+      <!-- Hero -->
+      <section class="section hero-section tone-black" id="hero">
+        <div class="particle-layer" data-dots="10"></div>
+
+        <p class="bismillah">بِسْمِ ٱللّٰهِ ٱلرَّحْمٰنِ ٱلرَّحِيمِ</p>
+
+        <div class="verse-block">
+          <p class="verse-arabic">وَخَلَقْنَاكُمْ أَزْوَاجًا</p>
+          <p class="verse-translation">&ldquo;And We created you in pairs&rdquo;</p>
+          <p class="verse-citation">Surah An-Naba &middot; Verse 8</p>
+        </div>
+
+        <p class="host-line">Mr and Mrs. Zahid Ali</p>
+        <p class="host-sub">requests the honour of your presence</p>
+        <p class="invite-line">as together, under one roof and with one heart, we celebrate the marriages of our son and our daughter</p>
+
+        <div class="pair-preview">
+          <div class="pair-row valima"><span class="tag">Valima</span><span>Sheheryar &amp; Unzila</span></div>
+          <div class="pair-row barat"><span class="tag">Baraat</span><span>Areeba &amp; Zain</span></div>
+        </div>
+      </section>
+
+      <div class="divider"><span class="line"></span><span class="mark">✦</span><span class="line"></span></div>
+
+      <!-- Valima Card — Sheheryar & Unzila -->
+      <section class="section event-section theme-valima" id="valima">
+        <p class="event-eyebrow">The Valima Of</p>
+        <h2 class="event-title">Sheheryar Ali</h2>
+        <div class="petal-layer" data-petals="7"></div>
+
+        <p class="host-line">Mr. &amp; Mrs. Zahid Ali</p>
+        <p class="invite-line">cordially invite you to celebrate the marriage of their son</p>
+        <div class="names-block">
+          <div class="groom-name">Sheheryar Ali</div>
+          <div class="with-mark"><span class="fl"></span>with<span class="fl r"></span></div>
+          <div class="bride-name">Unzila Siddiqui</div>
+          <p class="groom-of">daughter of Irshad Anwer</p>
+        </div>
+        <p class="blessing-line">Your presence and blessings will make this occasion even more special.</p>
+
+        <div class="archway" id="archValima">
+          <div class="door l"></div>
+          <div class="door r"></div>
+          <div class="doortext"><p class="blessing">Doors open to a new beginning, blessed and beautiful.</p></div>
+        </div>
+
+        <div class="countdown-grid" id="cdValimaGrid">
+          <div class="cd-box"><div class="cd-num" data-role="days">00</div><div class="cd-label">Days</div></div>
+          <div class="cd-box"><div class="cd-num" data-role="hours">00</div><div class="cd-label">Hours</div></div>
+          <div class="cd-box"><div class="cd-num" data-role="mins">00</div><div class="cd-label">Minutes</div></div>
+          <div class="cd-box"><div class="cd-num" data-role="secs">00</div><div class="cd-label">Seconds</div></div>
+        </div>
+      </section>
+
+      <div class="divider"><span class="line"></span><span class="mark">❖</span><span class="line"></span></div>
+
+      <!-- Barat Card — Areeba & Zain -->
+      <section class="section event-section theme-barat" id="barat">
+        <p class="event-eyebrow">The Baraat Of</p>
+        <h2 class="event-title">Areeba Zahid</h2>
+        <div class="petal-layer" data-petals="7"></div>
+
+        <p class="host-line">Mr. &amp; Mrs. Zahid Ali</p>
+        <p class="invite-line">cordially invite you to celebrate the marriage of their daughter</p>
+        <div class="names-block">
+          <div class="bride-name">Areeba Zahid</div>
+          <div class="with-mark"><span class="fl"></span>with<span class="fl r"></span></div>
+          <div class="groom-name">Muhammad Zain</div>
+          <p class="groom-of">son of Saleem Siddiqui</p>
+        </div>
+        <p class="blessing-line">Your presence and blessings will make this occasion even more special.</p>
+
+        <div class="archway" id="archBarat">
+          <div class="door l"></div>
+          <div class="door r"></div>
+          <div class="doortext"><p class="blessing">May this union be crowned with love, light and forever.</p></div>
+        </div>
+
+        <div class="countdown-grid" id="cdBaratGrid">
+          <div class="cd-box"><div class="cd-num" data-role="days">00</div><div class="cd-label">Days</div></div>
+          <div class="cd-box"><div class="cd-num" data-role="hours">00</div><div class="cd-label">Hours</div></div>
+          <div class="cd-box"><div class="cd-num" data-role="mins">00</div><div class="cd-label">Minutes</div></div>
+          <div class="cd-box"><div class="cd-num" data-role="secs">00</div><div class="cd-label">Seconds</div></div>
+        </div>
+      </section>
+
+      <div class="divider"><span class="line"></span><span class="mark">✦</span><span class="line"></span></div>
+
+      <!-- ScratchCard -->
+      <section class="section scratch-section tone-black" id="scratch">
+        <p class="section-title" style="font-family:var(--font-display);font-weight:600;font-size:20px;color:var(--gold-champagne);margin-bottom:6px;">A Little Secret</p>
+        <p class="section-subtitle" style="font-size:12px;color:var(--cream-faint);letter-spacing:.08em;margin-bottom:28px;text-transform:uppercase;">Scratch the gold to reveal</p>
+        <div class="scratch-wrap" id="scratchWrap">
+          <div class="scratch-reveal">
+            <div class="rdate">21 &bull; 12 &bull; 2026</div>
+            <p class="rmsg">Two unions, one family, blessings without end.</p>
+          </div>
+          <canvas id="scratchCanvas"></canvas>
+        </div>
+        <p class="scratch-caption">Use your finger or mouse to scratch</p>
+      </section>
+
+      <div class="divider"><span class="line"></span><span class="mark">❖</span><span class="line"></span></div>
+
+      <!-- Calendar -->
+      <section class="section calendar-section tone-neutral" id="calendar">
+        <p class="section-title" style="font-family:var(--font-display);font-weight:600;font-size:20px;color:var(--gold-champagne);margin-bottom:6px;">Mark Your Calendar</p>
+        <p class="section-subtitle" style="font-size:12px;color:var(--cream-faint);letter-spacing:.08em;margin-bottom:28px;text-transform:uppercase;">December 2026</p>
+        <div class="cal-card">
+          <p class="cal-month">December</p>
+          <p class="cal-month-sub">2026</p>
+          <div class="cal-grid" id="calGrid"></div>
+        </div>
+      </section>
+
+      <div class="divider"><span class="line"></span><span class="mark">✦</span><span class="line"></span></div>
+
+      <!-- VenueSection -->
+      <section class="section venue-section tone-black" id="venue">
+        <p class="venue-eyebrow">Awaiting to Welcome You</p>
+        <p class="venue-host">Family of Zahid Ali</p>
+        <p class="venue-name-label">Venue</p>
+        <p class="venue-name">Tabish Banquet</p>
+        <p class="venue-address">Sector X-1, Gulshan-e-Maymar, Karachi</p>
+        <button class="directions-btn" id="directionsBtn"><span>Get Directions</span></button>
+      </section>
+
+      <footer class="footer">
+        <p class="fnames">Sheheryar &amp; Unzila &nbsp;&middot;&nbsp; Areeba &amp; Zain</p>
+        <p class="fdate">21 December 2026 &middot; Tabish Banquet, Karachi</p>
+      </footer>
+
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ------------------------------------------------------------
+     Gold dust particles + twinkle dots
+     ------------------------------------------------------------ */
+  function scatterDots(container, count){
+    for(let i=0;i<count;i++){
+      const d = document.createElement('div');
+      d.className = 'gold-dot';
+      d.style.left = (Math.random()*100)+'%';
+      d.style.top = (Math.random()*100)+'%';
+      d.style.animationDelay = (Math.random()*3.4)+'s';
+      container.appendChild(d);
+    }
+  }
+  document.querySelectorAll('.particle-layer').forEach(el => scatterDots(el, parseInt(el.dataset.dots||'10',10)));
+
+  function scatterPetals(container, count){
+    for(let i=0;i<count;i++){
+      const p = document.createElement('div');
+      p.className = 'petal';
+      const size = 9 + Math.random()*8;
+      p.style.width = size+'px';
+      p.style.height = size+'px';
+      p.style.left = (Math.random()*100)+'%';
+      p.style.animationDuration = (8 + Math.random()*7)+'s';
+      p.style.animationDelay = (Math.random()*7)+'s';
+      container.appendChild(p);
+    }
+  }
+  document.querySelectorAll('.petal-layer').forEach(el => scatterPetals(el, parseInt(el.dataset.petals||'6',10)));
+
+  const dustLayer = document.createElement('div');
+  dustLayer.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden;';
+  document.body.appendChild(dustLayer);
+  for(let i=0;i<26;i++){
+    const p = document.createElement('div');
+    p.className = 'gold-dust';
+    p.style.left = (Math.random()*100)+'%';
+    p.style.animationDuration = (10 + Math.random()*10)+'s';
+    p.style.animationDelay = (Math.random()*10)+'s';
+    dustLayer.appendChild(p);
+  }
+
+  /* ------------------------------------------------------------
+     CurtainIntro
+     ------------------------------------------------------------ */
+  const stage = document.getElementById('curtainStage');
+  const openBtn = document.getElementById('openBtn');
+  const body = document.body;
+
+  function playChime(){
+    try{
+      const Ctx = window.AudioContext || window.webkitAudioContext;
+      const ctx = new Ctx();
+      const notes = [523.25, 659.25, 784.0];
+      notes.forEach((freq, i) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+        const start = ctx.currentTime + i*0.16;
+        gain.gain.setValueAtTime(0, start);
+        gain.gain.linearRampToValueAtTime(0.09, start + 0.05);
+        gain.gain.exponentialRampToValueAtTime(0.0001, start + 1.4);
+        osc.connect(gain).connect(ctx.destination);
+        osc.start(start);
+        osc.stop(start + 1.5);
+      });
+    }catch(e){}
+  }
+
+  openBtn.addEventListener('click', function(){
+    playChime();
+    stage.classList.add('opening');
+    body.classList.remove('locked');
+    setTimeout(function(){
+      stage.classList.add('hidden');
+      initScrollReveal();
+    }, 2000);
+  });
+
+  /* ------------------------------------------------------------
+     Scroll reveal — sections + archway doors
+     ------------------------------------------------------------ */
+  function initScrollReveal(){
+    const sections = document.querySelectorAll('.section');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('revealed');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18 });
+    sections.forEach(s => io.observe(s));
+
+    const arches = document.querySelectorAll('.archway');
+    const io2 = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          setTimeout(()=> entry.target.classList.add('revealed'), 350);
+          io2.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    arches.forEach(a => io2.observe(a));
+  }
+  setTimeout(initScrollReveal, 50);
+
+  /* ------------------------------------------------------------
+     Dual Countdown — same target, two gold-framed displays
+     ------------------------------------------------------------ */
+  const target = new Date(2026, 11, 21, 0, 0, 0); // 21 December 2026
+
+  function wireCountdown(gridId){
+    const grid = document.getElementById(gridId);
+    if(!grid) return;
+    const elDays = grid.querySelector('[data-role="days"]');
+    const elHours = grid.querySelector('[data-role="hours"]');
+    const elMins = grid.querySelector('[data-role="mins"]');
+    const elSecs = grid.querySelector('[data-role="secs"]');
+    let prev = { d:null, h:null, m:null, s:null };
+
+    function pulse(el, val, key){
+      const str = String(val).padStart(2,'0');
+      if(prev[key] !== val){
+        el.textContent = str;
+        el.classList.add('tick');
+        setTimeout(()=> el.classList.remove('tick'), 350);
+        prev[key] = val;
+      }
+    }
+
+    function tick(){
+      const now = new Date();
+      let diff = target - now;
+      if(diff <= 0){
+        grid.innerHTML = '<p class="arrived-msg" style="grid-column:1/-1;">✦ The Day Has Arrived ✦</p>';
+        clearInterval(timer);
+        return;
+      }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      pulse(elDays, d, 'd'); pulse(elHours, h, 'h'); pulse(elMins, m, 'm'); pulse(elSecs, s, 's');
+    }
+    tick();
+    const timer = setInterval(tick, 1000);
+  }
+  wireCountdown('cdValimaGrid');
+  wireCountdown('cdBaratGrid');
+
+  /* ------------------------------------------------------------
+     ScratchCard
+     ------------------------------------------------------------ */
+  const wrap = document.getElementById('scratchWrap');
+  const canvas = document.getElementById('scratchCanvas');
+  const ctx2d = canvas.getContext('2d');
+  let scratching = false, revealed = false, checkCounter = 0;
+
+  function sizeCanvas(){
+    const rect = wrap.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = rect.height + 'px';
+    ctx2d.setTransform(dpr,0,0,dpr,0,0);
+    drawScratchLayer(rect.width, rect.height);
+  }
+
+  function drawScratchLayer(w, h){
+    revealed = false;
+    canvas.style.opacity = '1';
+    canvas.style.pointerEvents = 'auto';
+    ctx2d.globalCompositeOperation = 'source-over';
+    const grad = ctx2d.createLinearGradient(0,0,w,h);
+    grad.addColorStop(0, '#E9C77B');
+    grad.addColorStop(0.5, '#C9A24B');
+    grad.addColorStop(1, '#8A6423');
+    ctx2d.fillStyle = grad;
+    ctx2d.fillRect(0,0,w,h);
+
+    ctx2d.strokeStyle = 'rgba(255,255,255,0.12)';
+    ctx2d.lineWidth = 1;
+    for(let x = -h; x < w; x += 8){
+      ctx2d.beginPath(); ctx2d.moveTo(x,0); ctx2d.lineTo(x+h,h); ctx2d.stroke();
+    }
+
+    ctx2d.fillStyle = 'rgba(21,14,12,0.9)';
+    ctx2d.font = '600 15px Poppins, sans-serif';
+    ctx2d.textAlign = 'center';
+    ctx2d.textBaseline = 'middle';
+    ctx2d.fillText('✦ Scratch to Reveal ✦', w/2, h/2);
+  }
+
+  function getPos(e){
+    const rect = canvas.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    return { x: clientX - rect.left, y: clientY - rect.top };
+  }
+
+  function scratchAt(x, y){
+    ctx2d.globalCompositeOperation = 'destination-out';
+    ctx2d.beginPath(); ctx2d.arc(x, y, 22, 0, Math.PI*2); ctx2d.fill();
+  }
+
+  function checkRevealProgress(){
+    if(revealed) return;
+    checkCounter++;
+    if(checkCounter % 6 !== 0) return;
+    let data;
+    try{ data = ctx2d.getImageData(0,0, canvas.width, canvas.height); }catch(e){ return; }
+    const sampleW = 48, sampleH = 28;
+    const stepX = Math.max(1, Math.floor(canvas.width / sampleW));
+    const stepY = Math.max(1, Math.floor(canvas.height / sampleH));
+    let total = 0, cleared = 0;
+    for(let y=0; y<canvas.height; y+=stepY){
+      for(let x=0; x<canvas.width; x+=stepX){
+        const idx = (y*canvas.width + x) * 4 + 3;
+        total++;
+        if(data.data[idx] < 40) cleared++;
+      }
+    }
+    if(total > 0 && cleared/total > 0.45){
+      revealed = true;
+      canvas.style.transition = 'opacity .8s ease';
+      canvas.style.opacity = '0';
+      canvas.style.pointerEvents = 'none';
+    }
+  }
+
+  function startScratch(e){ scratching = true; const pos = getPos(e); scratchAt(pos.x, pos.y); e.preventDefault(); }
+  function moveScratch(e){ if(!scratching) return; const pos = getPos(e); scratchAt(pos.x, pos.y); checkRevealProgress(); e.preventDefault(); }
+  function endScratch(){ scratching = false; }
+
+  canvas.addEventListener('mousedown', startScratch);
+  canvas.addEventListener('mousemove', moveScratch);
+  window.addEventListener('mouseup', endScratch);
+  canvas.addEventListener('touchstart', startScratch, { passive:false });
+  canvas.addEventListener('touchmove', moveScratch, { passive:false });
+  canvas.addEventListener('touchend', endScratch);
+
+  function debounce(fn, wait){ let t; return function(){ clearTimeout(t); t = setTimeout(fn, wait); }; }
+  window.addEventListener('resize', debounce(sizeCanvas, 250));
+  window.addEventListener('load', sizeCanvas);
+  setTimeout(sizeCanvas, 400);
+
+  /* ------------------------------------------------------------
+     Calendar — December 2026
+     ------------------------------------------------------------ */
+  const calGrid = document.getElementById('calGrid');
+  const weekdays = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+  const year = 2026, monthIndex = 11; // December
+  const firstDay = new Date(year, monthIndex, 1).getDay();
+  const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
+
+  weekdays.forEach(wd=>{
+    const el = document.createElement('div');
+    el.className = 'cal-wd';
+    el.textContent = wd;
+    calGrid.appendChild(el);
+  });
+  for(let i=0;i<firstDay;i++){
+    const el = document.createElement('div');
+    el.className = 'cal-day empty';
+    calGrid.appendChild(el);
+  }
+  for(let day=1; day<=daysInMonth; day++){
+    const el = document.createElement('div');
+    el.className = 'cal-day' + (day === 21 ? ' highlight' : '');
+    el.textContent = day;
+    if(day === 21){
+      const badge = document.createElement('span');
+      badge.className = 'ring-badge';
+      badge.textContent = '💍';
+      el.appendChild(badge);
+    }
+    calGrid.appendChild(el);
+  }
+
+  /* ------------------------------------------------------------
+     VenueSection — Get Directions
+     ------------------------------------------------------------ */
+  document.getElementById('directionsBtn').addEventListener('click', function(){
+    window.open('https://maps.app.goo.gl/6NhV8Mo4yPf6HpZE6', '_blank', 'noopener,noreferrer');
+  });
+
+})();
+</script>
+</body>
+</html>
